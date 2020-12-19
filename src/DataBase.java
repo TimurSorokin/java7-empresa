@@ -47,24 +47,27 @@ public class DataBase {
 
     private void CreateTables(){
         String createProduct = "CREATE TABLE product (" +
-                "product_id  int NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+                "product_id  int NOT NULL AUTO_INCREMENT," +
                 "product_name TEXT    NOT NULL," +
-                "product_price DECIMAL(6,4) NOT NULL" +
+                "product_price DECIMAL(6,4) NOT NULL," +
+                "PRIMARY KEY(product_id)" +
                 ");";
         String createClient = "CREATE TABLE client (\n" +
-                "client_id  int NOT NULL AUTO_INCREMENT PRIMARY KEY,\n" +
+                "client_id  int NOT NULL AUTO_INCREMENT ,\n" +
                 "client_name TEXT    NOT NULL,\n" +
                 "client_manager TEXT    NOT NULL,\n" +
                 "client_address TEXT    NOT NULL,\n" +
-                "client_sign_date DATE " +
+                "client_sign_date DATE," +
+                "PRIMARY KEY(client_id)" +
                 ");";
         String createSale = "CREATE TABLE sale (\n" +
                 "date DATE,"+
-                "sale_id int NOT NULL AUTO_INCREMENT PRIMARY KEY ,\n" +
+                "sale_id int NOT NULL AUTO_INCREMENT,\n" +
                 "client_id INTEGER  NOT NULL,\n" +
                 "product_id INTEGER   NOT NULL,\n" +
                 "amount INTEGER NOT NULL,\n" +
-                "paid TEXT,"+
+                "paid TEXT," +
+                "PRIMARY KEY(sale_id),"+
                 "FOREIGN KEY (client_id)\n" +
                 "REFERENCES client (client_id),\n" +
                 "FOREIGN KEY (product_id)\n" +
