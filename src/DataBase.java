@@ -1,21 +1,13 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.io.File;
-import java.io.IOException;
+
 import java.sql.*;
 
 
 public class DataBase {
-    //String url = "jdbc:ucanaccess://src//DataBaseAccess.accdb";
-    String url = "database/empresa.accdb";
+
     public DataBase() {
-        //CreateDataBase();
-
-    /*  if(!DoesDataBaseExist()){
-          CreateDataBase();
-      }
-
-     */
+        //CreateTables();
     }
     private Connection connect() {
         String link = "jdbc:mysql://localhost:3306/practicajdbc";
@@ -28,22 +20,7 @@ public class DataBase {
         return conn;
     }
 
-    private boolean DoesDataBaseExist(){
-        File file = new File(url);
-        if(file.exists()){
-            return true;
-        }
-        return false;
-    }
-    private void CreateDataBase(){
-        File file = new File(url);
-        try {
-            file.createNewFile();
-            CreateTables();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     private void CreateTables(){
         String createProduct = "CREATE TABLE product (" +
